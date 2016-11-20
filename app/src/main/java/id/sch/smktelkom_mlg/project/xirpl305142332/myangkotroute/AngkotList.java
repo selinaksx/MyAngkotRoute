@@ -2,8 +2,11 @@ package id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute;
 
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -37,8 +40,13 @@ public class AngkotList extends AppCompatActivity {
         String[] arDeskripsi = resources.getStringArray(R.array.place_desc);
         TypedArray a = resources.obtainTypedArray(R.array.places_picture);
         Drawable[] arFoto = new Drawable[a.length()];
-        for (int i = 0; i < arFoto.length; i++) {
-            arFoto[i] = a.getDrawable(i);
+        for (int i = 0; i < arFoto.length; i++)
+        {
+            BitmapDrawable bd = (BitmapDrawable) a.getDrawable(i);
+            RoundedBitmapDrawable rbd = RoundedBitmapDrawableFactory.create(getResources(), bd.getBitmap());
+            rbd.setCircular(true);
+            arFoto[i] = rbd;
+
         }
         a.recycle();
         for (int i = 0; i < arJudul.length; i++) {
