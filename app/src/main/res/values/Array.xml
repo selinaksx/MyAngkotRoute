@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2016 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<resources>
+    <string-array name="places">
+        <item>Angkot LDG</item>
+        <item>Angkot LG</item>
+        <item>Angkot MK</item>
+        <item>Angkot MM</item>
+        <item>Angkot Ahmed Mosque</item>
+        <item>Table Mountain</item>
+    </string-array>
+    <string-array name="place_desc">
+        <item>Angkutan Kota (angkot) jalur LDG ini adalah mobil angkutan umum berwarna biru yang namanya memiliki kepanjangan Landungsari Dinoyo Gadang. Sesuai dengan namanya, angkot yang memiliki identitas khusus berupa garis warna putih ini memiliki trayek setiap harinya dari Terminal Landungsari ke Terminal Gadang melalui Dinoyo.
+        </item>
+        <item>Angkutan Kota jalur LG ini adalah mobil angkutan umum berwarna biru yang namanya memiliki kepanjangan Landungsari-Gadang. Sesuai dengan namanya, angkot ini memiliki trayek setiap harinya dari Terminal Landungsari ke Terminal Gadang.</item>
+        <item>Angkutan Kota jalur MK ini adalah mobil angkutan umum berwarna biru yang namanya memiliki kepanjangan Madyopuro Karangbesuki. Sesuai dengan namanya, angkot ini memiliki trayek setiap harinya dari Terminal Madyopuro ke Terminal Karangbesuki.</item>
+        <item>Angkutan Kota jalur MM ini adalah mobil angkutan umum berwarna biru yang namanya memiliki kepanjangan Madyopuro Mulyorejo. Sesuai dengan namanya, angkot yang memliki identitas khusus berupa garis warna merah ini memiliki trayek setiap harinya dari Terminal Madyopuro ke Terminal Mulyorejo.</item>
+        <item>Sultan Ahmed Mosque is mosque locates in Istabul, Turkey</item>
+        <item>Table Mountain is mountain and park locates in Cape Town, South Africa.</item>
+    </string-array>
+    <string-array name="place_details">
+        <item>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id est laborum.
+        </item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id est laborum.
+        </item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id est laborum.
+        </item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id est laborum.
+        </item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id est laborum.
+        </item>
+        <item>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+        irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+        deserunt mollit anim id est laborum.
+        </item>
+    </string-array>
+    <string-array name="place_locations">
+        <item>8 Rue Scribe, 75009 Paris, France</item>
+        <item>Piazza del Capitolo - 50122 Florence</item>
+        <item>New York City</item>
+        <item>2-3-1 Asakusa, Taitō-ku, Tokyo, Japan</item>
+        <item>At Meydanı No:7, 34122 Fatih/İstanbul, Turkey</item>
+        <item>Cape Town, South Africa</item>
+    </string-array>
+    <array name="places_picture">
+        <item>@drawable/a</item>
+        <item>@drawable/b</item>
+        <item>@drawable/c</item>
+        <item>@drawable/d</item>
+        <item>@drawable/e</item>
+        <item>@drawable/f</item>
+
+
+    </array>
+</resources>
