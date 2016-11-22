@@ -1,12 +1,10 @@
 package id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,9 +15,14 @@ import java.util.ArrayList;
 import id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute.Adapter.AngkotAdapter;
 import id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute.model.Angkot;
 
-public class AngkotList extends AppCompatActivity {
+public class AngkotList extends AppCompatActivity implements AngkotAdapter.IAngkotAdapter{
+
+    public static final String ANGKOT = "angkot";
+
     ArrayList<Angkot> mList = new ArrayList<>();
     AngkotAdapter mAdapter;
+    int ItemPos;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -28,7 +31,7 @@ public class AngkotList extends AppCompatActivity {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new AngkotAdapter(mList);
+        mAdapter = new AngkotAdapter(this, mList);
         recyclerView.setAdapter(mAdapter);
 
         filldata();
@@ -42,10 +45,7 @@ public class AngkotList extends AppCompatActivity {
         Drawable[] arFoto = new Drawable[a.length()];
         for (int i = 0; i < arFoto.length; i++)
         {
-            BitmapDrawable bd = (BitmapDrawable) a.getDrawable(i);
-            RoundedBitmapDrawable rbd = RoundedBitmapDrawableFactory.create(getResources(), bd.getBitmap());
-            rbd.setCircular(true);
-            arFoto[i] = rbd;
+            arFoto[i] = a.getDrawable(i);
 
         }
         a.recycle();
@@ -62,5 +62,13 @@ public class AngkotList extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void doClick(int pos)
+    {
+        Intent intent = new Intent(this, coba.class);
+        intent.putExtra(ANGKOT,mList.get(pos).judul.toString());
+        startActivity(intent);
     }
 }

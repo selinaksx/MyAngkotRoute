@@ -16,21 +16,37 @@
   -->
 <resources>
     <string-array name="places">
+        <item>Angkot ABG</item>
+        <item>Angkot ADL</item>
+        <item>Angkot AG</item>
+        <item>Angkot AL</item>
+        <item>Angkot AMG</item>
+        <item>Angkot CKL</item>
+        <item>Angkot GA</item>
+        <item>Angkot GL</item>
+        <item>Angkot GML</item>
         <item>Angkot LDG</item>
         <item>Angkot LG</item>
         <item>Angkot MK</item>
         <item>Angkot MM</item>
-        <item>Angkot Ahmed Mosque</item>
-        <item>Table Mountain</item>
+        <item>Angkot GM</item>
     </string-array>
     <string-array name="place_desc">
-        <item>Angkutan Kota (angkot) jalur LDG ini adalah mobil angkutan umum berwarna biru yang namanya memiliki kepanjangan Landungsari Dinoyo Gadang. Sesuai dengan namanya, angkot yang memiliki identitas khusus berupa garis warna putih ini memiliki trayek setiap harinya dari Terminal Landungsari ke Terminal Gadang melalui Dinoyo.
-        </item>
-        <item>Angkutan Kota jalur LG ini adalah mobil angkutan umum berwarna biru yang namanya memiliki kepanjangan Landungsari-Gadang. Sesuai dengan namanya, angkot ini memiliki trayek setiap harinya dari Terminal Landungsari ke Terminal Gadang.</item>
-        <item>Angkutan Kota jalur MK ini adalah mobil angkutan umum berwarna biru yang namanya memiliki kepanjangan Madyopuro Karangbesuki. Sesuai dengan namanya, angkot ini memiliki trayek setiap harinya dari Terminal Madyopuro ke Terminal Karangbesuki.</item>
-        <item>Angkutan Kota jalur MM ini adalah mobil angkutan umum berwarna biru yang namanya memiliki kepanjangan Madyopuro Mulyorejo. Sesuai dengan namanya, angkot yang memliki identitas khusus berupa garis warna merah ini memiliki trayek setiap harinya dari Terminal Madyopuro ke Terminal Mulyorejo.</item>
-        <item>Sultan Ahmed Mosque is mosque locates in Istabul, Turkey</item>
-        <item>Table Mountain is mountain and park locates in Cape Town, South Africa.</item>
+        <item>Arjosari - Borobudur - Gadang</item>
+        <item>Arjosari - Dinoyo - Landungsari</item>
+        <item>Arjosari - Gadang</item>
+        <item>Arjosari - Landungsari</item>
+        <item>Arjosari - Mergosono - Gadang</item>
+        <item>Cemorokandang - Landungsari</item>
+        <item>Gadang - Arjosari</item>
+        <item>Gadang - Landungsari</item>
+        <item>Gadang - Mergan - Landungsari</item>
+        <item>Landungsari - Dinoyo - Gadang</item>
+        <item>Landungsari - Gadang</item>
+        <item>Mulyorejo - Karang Besuki</item>
+        <item>Madyopuro - Mulyorejo</item>
+        <item>Gadang - Madyopuro</item>
+
     </string-array>
     <string-array name="place_details">
         <item>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -91,7 +107,13 @@
         <item>@drawable/d</item>
         <item>@drawable/e</item>
         <item>@drawable/f</item>
-
-
+        <item>@drawable/g</item>
+        <item>@drawable/h</item>
+        <item>@drawable/i</item>
+        <item>@drawable/j</item>
+        <item>@drawable/k</item>
+        <item>@drawable/l</item>
+        <item>@drawable/m</item>
+        <item>@drawable/n</item>
     </array>
 </resources>

@@ -1,5 +1,6 @@
 package id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute.Adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,10 +18,14 @@ import id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute.model.Angkot;
  */
 public class AngkotAdapter extends RecyclerView.Adapter<AngkotAdapter.ViewHolder> {
     ArrayList<Angkot> angkotList;
+    IAngkotAdapter mIAngkotAdapter;
 
-    public AngkotAdapter(ArrayList<Angkot> angkotList) {
+    public AngkotAdapter(Context context, ArrayList<Angkot> angkotList) {
         this.angkotList = angkotList;
+        mIAngkotAdapter = (IAngkotAdapter) context;
     }
+
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -28,6 +33,7 @@ public class AngkotAdapter extends RecyclerView.Adapter<AngkotAdapter.ViewHolder
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
+
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
@@ -37,12 +43,19 @@ public class AngkotAdapter extends RecyclerView.Adapter<AngkotAdapter.ViewHolder
         holder.ivFoto.setImageDrawable(angkot.foto);
     }
 
+
     @Override
     public int getItemCount() {
         if (angkotList != null)
             return angkotList.size();
         return 0;
     }
+
+    public interface IAngkotAdapter
+    {
+        void doClick(int pos);
+    }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivFoto;
@@ -54,6 +67,15 @@ public class AngkotAdapter extends RecyclerView.Adapter<AngkotAdapter.ViewHolder
             ivFoto = (ImageView) itemView.findViewById(R.id.imageView);
             tvJudul = (TextView) itemView.findViewById(R.id.textViewJudul);
             tvDeskripsi = (TextView) itemView.findViewById(R.id.textViewDeskripsi);
-        }
+
+        itemView.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+                    public void onClick(View v)
+            {
+                mIAngkotAdapter.doClick(getAdapterPosition());
+            }
+        });
+    }
     }
 }

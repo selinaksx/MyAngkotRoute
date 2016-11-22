@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AngkotList"></activity>
+        <activity android:name=".AngkotList" />
+        <activity android:name=".coba"></activity>
     </application>
 
 </manifest>
