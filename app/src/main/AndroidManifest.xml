@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".AngkotList" />
         <activity android:name=".MapsActivity" />
+        <activity android:name=".AngkotDetails" />
     </application>
 
 </manifest>

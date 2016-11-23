@@ -68,7 +68,7 @@ public class AngkotList extends AppCompatActivity implements AngkotAdapter.IAngk
     @Override
     public void doClick(int pos)
     {
-        Intent intent = new Intent(this, coba.class);
+        Intent intent = new Intent(this, AngkotDetails.class);
         intent.putExtra(ANGKOT,mList.get(pos).judul.toString());
         startActivity(intent);
     }

@@ -39,9 +39,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
 
-    LatLng TENDEAN = new LatLng(-6.248000,106.8322);
-    LatLng MONAS = new LatLng(-6.1755, 106.8273);
-
+    LatLng x = new LatLng(-7.977199, 112.658868);
+    LatLng y = new LatLng(-7.981429, 112.630705);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,9 +51,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        LatLng source = TENDEAN;
 
-        dowloadDirection(source, MONAS, MapDirection.MODE_DRIVING);
+        LatLng source = x;
+
+        dowloadDirection(source, y, MapDirection.MODE_DRIVING);
 
     }
 
@@ -121,11 +121,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng moklet = new LatLng(-7.976971, 112.658837);
-        mMap.addMarker(new MarkerOptions().position(moklet).title("Marker in Telkom Schools Malang"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(moklet));
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(TENDEAN, 17);
+        mMap.addMarker(new MarkerOptions().position(x).title("Marker in Position"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(x));
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(x, 17);
         mMap.animateCamera(cameraUpdate);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -137,8 +135,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        mMap.setMyLocationEnabled(true);
-        mMap.getUiSettings().setMapToolbarEnabled(true);
-
     }
 }
