@@ -20,12 +20,17 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.maps.android.kml.KmlContainer;
+import com.google.maps.android.kml.KmlLayer;
+import com.google.maps.android.kml.KmlPlacemark;
+import com.google.maps.android.kml.KmlPolygon;
 
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -35,13 +40,58 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import static id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute.R.id.map;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
 
-    LatLng TENDEAN = new LatLng(-6.248000,106.8322);
-    LatLng MONAS = new LatLng(-6.1755, 106.8273);
+    protected int getLayoutId() {
+        return R.layout.kml_demo;
+    }
 
+    public void startDemo() {
+        try {
+            mMap = getMap();
+            retrieveFileFromResource();
+            //retrieveFileFromUrl();
+        } catch (Exception e) {
+            Log.e("Exception caught", e.toString());
+        }
+    }
+
+    private GoogleMap getMap() {
+        return mMap;
+    }
+
+    private void retrieveFileFromResource() {
+        try {
+            KmlLayer kmlLayer = new KmlLayer(mMap, R.raw.adl, getApplicationContext());
+            kmlLayer.addLayerToMap();
+            moveCameraToKml(kmlLayer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (XmlPullParserException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void moveCameraToKml(KmlLayer kmlLayer) {
+        //Retrieve the first container in the KML layer
+        KmlContainer container = kmlLayer.getContainers().iterator().next();
+        //Retrieve a nested container within the first container
+        container = container.getContainers().iterator().next();
+        //Retrieve the first placemark in the nested container
+        KmlPlacemark placemark = container.getPlacemarks().iterator().next();
+        //Retrieve a polygon object in a placemark
+        KmlPolygon polygon = (KmlPolygon) placemark.getGeometry();
+        //Create LatLngBounds of the outer coordinates of the polygon
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        for (LatLng latLng : polygon.getOuterBoundaryCoordinates()) {
+            builder.include(latLng);
+        }
+        getMap().moveCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 1));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +99,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
         //Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+                .findFragmentById(map);
         mapFragment.getMapAsync(this);
 
-        LatLng source = TENDEAN;
 
-        dowloadDirection(source, MONAS, MapDirection.MODE_DRIVING);
 
     }
 
@@ -102,7 +150,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Log.d("FLOW","MSG:"+doc==null?"":doc.toString());
         MapDirection md = new MapDirection();
         ArrayList<LatLng> directionPoint = md.getDirection(doc);
-        PolylineOptions rectLine = new PolylineOptions().width(5).color(Color.GREEN);
+        PolylineOptions rectLine = new PolylineOptions().width(5).color(Color.RED);
 
         rectLine.addAll(directionPoint);
         mMap.addPolyline(rectLine);
@@ -118,14 +166,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * installed Google Play services and returned to the app.
      */
     @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+    public void onMapReady(GoogleMap map) {
+        if (mMap != null) {
+            return;
+        }
+        mMap = map;
+        startDemo();
 
-        // Add a marker in Sydney and move the camera
-        LatLng moklet = new LatLng(-7.976971, 112.658837);
-        mMap.addMarker(new MarkerOptions().position(moklet).title("Marker in Telkom Schools Malang"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(moklet));
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(TENDEAN, 17);
+        LatLng malang = new LatLng(-7.967759, 112.634526);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(malang));
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(malang, 17);
         mMap.animateCamera(cameraUpdate);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -137,8 +187,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        mMap.setMyLocationEnabled(true);
-        mMap.getUiSettings().setMapToolbarEnabled(true);
+
 
     }
 }
