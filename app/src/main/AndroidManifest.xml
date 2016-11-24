@@ -13,8 +13,16 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value=" AIzaSyAFATJyy-1xUgeocFMM7wDxdtAUaDFmPBI" />
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"></action>
+                <category android:name="android.intent.category.LAUNCHER"></category>
+            </intent-filter>
+        </activity>
         <activity android:name=".MapsActivity" />
         <activity android:name=".AngkotDetails" />
+        <activity android:name=".AngkotList" />
     </application>
 
 </manifest>
