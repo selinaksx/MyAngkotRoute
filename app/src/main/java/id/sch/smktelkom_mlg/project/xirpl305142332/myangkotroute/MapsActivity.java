@@ -37,10 +37,9 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
-
     LatLng x = new LatLng(-7.977199, 112.658868);
     LatLng y = new LatLng(-7.981429, 112.630705);
+    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,7 +101,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Log.d("FLOW","MSG:"+doc==null?"":doc.toString());
         MapDirection md = new MapDirection();
         ArrayList<LatLng> directionPoint = md.getDirection(doc);
-        PolylineOptions rectLine = new PolylineOptions().width(5).color(Color.GREEN);
+        PolylineOptions rectLine = new PolylineOptions().width(5).color(Color.RED);
 
         rectLine.addAll(directionPoint);
         mMap.addPolyline(rectLine);

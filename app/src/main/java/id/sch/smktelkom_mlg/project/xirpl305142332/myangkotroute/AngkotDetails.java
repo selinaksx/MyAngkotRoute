@@ -1,41 +1,27 @@
 package id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import java.util.ArrayList;
+import android.view.View;
 
 public class AngkotDetails extends AppCompatActivity {
-    ArrayList<AngkotDetails> angkotDipilih;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_angkot_details);
-        TextView angkotDetail = (TextView) findViewById(R.id.place_detail);
-        TextView angkotLocation = (TextView) findViewById(R.id.place_location);
-        ImageView angkotGambar = (ImageView) findViewById(R.id.imageFoto);
-
         Intent intent = getIntent();
-        String judul = intent.getStringExtra("judul");
-        String deskripsi = intent.getStringExtra("deskripsi");
 
-        String foto = intent.getStringExtra("foto");
-        String detail = intent.getStringExtra("detail");
-        Log.d("APPfoto",foto);
-        angkotGambar.setImageURI(Uri.parse(foto));
-        angkotDetail.setText(deskripsi);
-        angkotLocation.setText(detail);
-
-        setTitle(judul);
-
-
+        setTitle(intent.getStringExtra("angkot"));
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(AngkotDetails.this, MapsActivity.class));
+            }
+        });
     }
 
     @Override
@@ -46,5 +32,4 @@ public class AngkotDetails extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
