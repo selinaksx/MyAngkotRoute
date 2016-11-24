@@ -1,6 +1,7 @@
 package id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute.Adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +41,7 @@ public class AngkotAdapter extends RecyclerView.Adapter<AngkotAdapter.ViewHolder
         Angkot angkot = angkotList.get(position);
         holder.tvJudul.setText(angkot.judul);
         holder.tvDeskripsi.setText(angkot.deskripsi);
-        holder.ivFoto.setImageDrawable(angkot.foto);
+        holder.ivFoto.setImageURI(Uri.parse(angkot.foto));
     }
 
 
@@ -57,7 +58,8 @@ public class AngkotAdapter extends RecyclerView.Adapter<AngkotAdapter.ViewHolder
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder
+    {
         ImageView ivFoto;
         TextView tvJudul;
         TextView tvDeskripsi;
