@@ -20,6 +20,10 @@ public class AngkotList extends AppCompatActivity implements AngkotAdapter.IAngk
     public static final String ANGKOT = "angkot";
 
     ArrayList<Angkot> mList = new ArrayList<>();
+    boolean isFiltered;
+    ArrayList<Integer> mListMapFilter = new ArrayList<>();
+    ArrayList<Angkot> mListAll = new ArrayList<>();
+    String mQuery;
     AngkotAdapter mAdapter;
     int ItemPos;
 
@@ -55,7 +59,6 @@ public class AngkotList extends AppCompatActivity implements AngkotAdapter.IAngk
         }
         mAdapter.notifyDataSetChanged();
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -72,4 +75,40 @@ public class AngkotList extends AppCompatActivity implements AngkotAdapter.IAngk
         intent.putExtra(ANGKOT,mList.get(pos).judul.toString());
         startActivity(intent);
     }
+
+
+    private void doFilter(String query)
+    {
+        if(!isFiltered)
+        {
+            mListAll.clear();
+            mListAll.addAll(mList);
+            isFiltered = true;
+        }
+
+        mList.clear();
+        if (query == null||query.isEmpty())
+        {
+            mList.addAll(mListAll);
+            isFiltered = false;
+        }
+        else
+        {
+            mListMapFilter.clear();
+            for (int i = 0; i < mListAll.size(); i++)
+            {
+                Angkot angkot = mListAll.get(i);
+                if (angkot.judul.toLowerCase().contains(query)||angkot.deskripsi.toLowerCase().contains(query))
+                {
+                    mList.add(angkot);
+                    mListMapFilter.add(i);
+                }
+            }
+        }
+        mAdapter.notifyDataSetChanged();
+    }
+
+
+
+
 }

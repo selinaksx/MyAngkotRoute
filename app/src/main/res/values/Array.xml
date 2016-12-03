@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~ Copyright (C) 2016 The Android Open Source Project
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,22 +16,37 @@
   -->
 <resources>
     <string-array name="places">
-        <item>Palais Garnie</item>
-        <item>Piazza del Duomo</item>
-        <item>Manhattan</item>
-        <item>Senso-ji</item>
-        <item>Sultan Ahmed Mosque</item>
-        <item>Table Mountain</item>
+        <item>Angkot ABG</item>
+        <item>Angkot ADL</item>
+        <item>Angkot AG</item>
+        <item>Angkot AL</item>
+        <item>Angkot AMG</item>
+        <item>Angkot CKL</item>
+        <item>Angkot GA</item>
+        <item>Angkot GL</item>
+        <item>Angkot GML</item>
+        <item>Angkot LDG</item>
+        <item>Angkot LG</item>
+        <item>Angkot MK</item>
+        <item>Angkot MM</item>
+        <item>Angkot GM</item>
     </string-array>
     <string-array name="place_desc">
-        <item>The Palais Garnier which locates in Paris was built from 1861 for
-        the Paris Opera.
-        </item>
-        <item>Piazza del Duomo the cathedral which locates in Florence.</item>
-        <item>Manhattan is the district in New York City</item>
-        <item>Senso-ji is the Shrine locates in Asakusa Tokyo</item>
-        <item>Sultan Ahmed Mosque is mosque locates in Istabul, Turkey</item>
-        <item>Table Mountain is mountain and park locates in Cape Town, South Africa.</item>
+        <item>Arjosari - Borobudur - Gadang</item>
+        <item>Arjosari - Dinoyo - Landungsari</item>
+        <item>Arjosari - Gadang</item>
+        <item>Arjosari - Landungsari</item>
+        <item>Arjosari - Mergosono - Gadang</item>
+        <item>Cemorokandang - Landungsari</item>
+        <item>Gadang - Arjosari</item>
+        <item>Gadang - Landungsari</item>
+        <item>Gadang - Mergan - Landungsari</item>
+        <item>Landungsari - Dinoyo - Gadang</item>
+        <item>Landungsari - Gadang</item>
+        <item>Mulyorejo - Karang Besuki</item>
+        <item>Madyopuro - Mulyorejo</item>
+        <item>Gadang - Madyopuro</item>
+
     </string-array>
     <string-array name="place_details">
         <item>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
@@ -91,5 +107,13 @@
         <item>@drawable/d</item>
         <item>@drawable/e</item>
         <item>@drawable/f</item>
+        <item>@drawable/g</item>
+        <item>@drawable/h</item>
+        <item>@drawable/i</item>
+        <item>@drawable/j</item>
+        <item>@drawable/k</item>
+        <item>@drawable/l</item>
+        <item>@drawable/m</item>
+        <item>@drawable/n</item>
     </array>
 </resources>
