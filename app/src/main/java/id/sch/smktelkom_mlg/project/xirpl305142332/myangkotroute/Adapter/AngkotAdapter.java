@@ -19,8 +19,10 @@ import id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute.model.Angkot;
 public class AngkotAdapter extends RecyclerView.Adapter<AngkotAdapter.ViewHolder> {
     ArrayList<Angkot> angkotList;
 
+
     public AngkotAdapter(AngkotList list, ArrayList<Angkot> angkotList) {
         this.angkotList = angkotList;
+
     }
 
     @Override
