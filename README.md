@@ -17,6 +17,11 @@ masih banyak wisatawan, pendatang, maupun warga kota sendiri yang belum mengetah
 #Maps akan langsung menunjukkan peta Kota Malang dan juga lokasi kita pada saat itu. Jadi, Maps disini berfungsi untuk mengetahui kita berada di jalan mana, dan lalu kita bisa menentukan Angkot mana yang melalui jalan tersebut.
 ![ScreenShot] (https://github.com/xjoliez/MyAngkotRoute/blob/master/Screenshot_2016-12-07-23-46-47.png "")
 
+#Video Demo Aplikasi
+
+#Link Download My Angkot Route
+https://www.4shared.com/mobile/rYW9Etxbba/myangkotroute.html
+
 #Nama Kontributor
 Bagas Try Ambodo | 
 XI RPL 3 | 
