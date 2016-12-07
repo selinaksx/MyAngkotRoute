@@ -1,5 +1,7 @@
 package id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute.Adapter;
 
+import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +11,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute.AngkotList;
 import id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute.R;
 import id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute.model.Angkot;
 
@@ -18,11 +19,11 @@ import id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute.model.Angkot;
  */
 public class AngkotAdapter extends RecyclerView.Adapter<AngkotAdapter.ViewHolder> {
     ArrayList<Angkot> angkotList;
+    IAngkotAdapter mIAngkotAdapter;
 
-
-    public AngkotAdapter(AngkotList list, ArrayList<Angkot> angkotList) {
+    public AngkotAdapter(Context context, ArrayList<Angkot> angkotList) {
         this.angkotList = angkotList;
-
+        mIAngkotAdapter = (IAngkotAdapter) context;
     }
 
     @Override
@@ -37,7 +38,7 @@ public class AngkotAdapter extends RecyclerView.Adapter<AngkotAdapter.ViewHolder
         Angkot angkot = angkotList.get(position);
         holder.tvJudul.setText(angkot.judul);
         holder.tvDeskripsi.setText(angkot.deskripsi);
-        holder.ivFoto.setImageDrawable(angkot.foto);
+        holder.ivFoto.setImageURI(Uri.parse(angkot.foto));
     }
 
     @Override
@@ -61,6 +62,13 @@ public class AngkotAdapter extends RecyclerView.Adapter<AngkotAdapter.ViewHolder
             ivFoto = (ImageView) itemView.findViewById(R.id.imageView);
             tvJudul = (TextView) itemView.findViewById(R.id.textViewJudul);
             tvDeskripsi = (TextView) itemView.findViewById(R.id.textViewDeskripsi);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mIAngkotAdapter.doClick(getAdapterPosition());
+                }
+            });
         }
     }
 }

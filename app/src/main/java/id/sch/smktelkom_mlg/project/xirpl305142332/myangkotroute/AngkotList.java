@@ -1,15 +1,16 @@
 package id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute;
 
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -49,21 +50,26 @@ public class AngkotList extends AppCompatActivity implements AngkotAdapter.IAngk
         Resources resources = getResources();
         String[] arJudul = resources.getStringArray(R.array.places);
         String[] arDeskripsi = resources.getStringArray(R.array.place_desc);
+        String[] arDetail = resources.getStringArray(R.array.place_details);
         TypedArray a = resources.obtainTypedArray(R.array.places_picture);
-        Drawable[] arFoto = new Drawable[a.length()];
+        String[] arFoto = new String[a.length()];
         for (int i = 0; i < arFoto.length; i++)
         {
-            arFoto[i] = a.getDrawable(i);
-
+            int id = a.getResourceId(i,0);
+                arFoto[i] = ContentResolver.SCHEME_ANDROID_RESOURCE+"://"
+                        +resources.getResourcePackageName(id)+'/'
+                        +resources.getResourceTypeName(id)+'/'
+                        +resources.getResourceEntryName(id);
         }
         a.recycle();
         for (int i = 0; i < arJudul.length; i++) {
-            mList.add(new Angkot(arJudul[i], arDeskripsi[i], arFoto[i]));
+            mList.add(new Angkot(arJudul[i], arDeskripsi[i], arFoto[i],arDetail[i]));
         }
         mAdapter.notifyDataSetChanged();
     }
     @Override
     public boolean onCreateOptionsMenu (Menu menu){
+
 
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem searchItem = menu.findItem(R.id.action_search);
@@ -102,7 +108,11 @@ public class AngkotList extends AppCompatActivity implements AngkotAdapter.IAngk
     public void doClick(int pos)
     {
         Intent intent = new Intent(this, AngkotDetails.class);
-        intent.putExtra(ANGKOT,mList.get(pos).judul.toString());
+        intent.putExtra("judul",mList.get(pos).judul.toString());
+        intent.putExtra("deskripsi",mList.get(pos).deskripsi.toString());
+        intent.putExtra("foto",mList.get(pos).foto.toString());
+        Log.d("APP",mList.get(pos).foto.toString());
+        intent.putExtra("detail",mList.get(pos).detail.toString());
         startActivity(intent);
     }
 
