@@ -5,9 +5,12 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import java.util.ArrayList;
@@ -20,6 +23,10 @@ public class AngkotList extends AppCompatActivity implements AngkotAdapter.IAngk
     public static final String ANGKOT = "angkot";
 
     ArrayList<Angkot> mList = new ArrayList<>();
+    boolean isFiltered;
+    ArrayList<Integer> mListMapFilter = new ArrayList<>();
+    ArrayList<Angkot> mListAll = new ArrayList<>();
+    String mQuery;
     AngkotAdapter mAdapter;
     int ItemPos;
 
@@ -55,7 +62,33 @@ public class AngkotList extends AppCompatActivity implements AngkotAdapter.IAngk
         }
         mAdapter.notifyDataSetChanged();
     }
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
 
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+
+        searchView.setOnQueryTextListener(
+                new SearchView.OnQueryTextListener()
+                {
+                    @Override
+                    public boolean onQueryTextSubmit(String query)
+                    {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText)
+                    {
+                        mQuery = newText.toLowerCase();
+                        doFilter(mQuery);
+                        return true;
+                    }
+                }
+        );
+        return true;
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
@@ -72,4 +105,40 @@ public class AngkotList extends AppCompatActivity implements AngkotAdapter.IAngk
         intent.putExtra(ANGKOT,mList.get(pos).judul.toString());
         startActivity(intent);
     }
+
+
+    private void doFilter(String query)
+    {
+        if(!isFiltered)
+        {
+            mListAll.clear();
+            mListAll.addAll(mList);
+            isFiltered = true;
+        }
+
+        mList.clear();
+        if (query == null||query.isEmpty())
+        {
+            mList.addAll(mListAll);
+            isFiltered = false;
+        }
+        else
+        {
+            mListMapFilter.clear();
+            for (int i = 0; i < mListAll.size(); i++)
+            {
+                Angkot angkot = mListAll.get(i);
+                if (angkot.judul.toLowerCase().contains(query)||angkot.deskripsi.toLowerCase().contains(query))
+                {
+                    mList.add(angkot);
+                    mListMapFilter.add(i);
+                }
+            }
+        }
+        mAdapter.notifyDataSetChanged();
+    }
+
+
+
+
 }
