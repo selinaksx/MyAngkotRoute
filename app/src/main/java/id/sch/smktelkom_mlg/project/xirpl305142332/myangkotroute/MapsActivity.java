@@ -1,5 +1,7 @@
 package id.sch.smktelkom_mlg.project.xirpl305142332.myangkotroute;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
@@ -34,7 +36,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        Uri gmmIntentUri = Uri.parse("geo:-7.977959, 112.655469?q=" + Uri.encode("Malang"));
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        if (mapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(mapIntent);
 
 
         }
     }
+}
